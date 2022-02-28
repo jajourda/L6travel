@@ -1,6 +1,7 @@
 import Head from 'next/head'
+import { getDataFromSheets } from "./api/sheets";
 
-export default function Home() {
+export default function Home(props: any) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -65,6 +66,19 @@ export default function Home() {
           </a>
         </div>
         <div>
+          <ul>
+            {props.data && props.data.length ? (
+              props.data.map((trailer: any) => (
+                <li key={trailer.modelNumber}>
+                  {trailer.modelNumber} - {trailer.modelName}
+                </li>
+              ))
+            ) : (
+              <li>Error: do not forget to setup your env variables 👇</li>
+            )}
+          </ul>
+        </div>
+        <div>
 
           <div className="bg-darkGray dark:bg-gray-800 ">
             <div className="lg:flex lg:items-center lg:justify-between w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
@@ -102,4 +116,16 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export async function getStaticProps(context: any) {
+  let c = context;
+  console.log(c)
+  const sheet = await getDataFromSheets();
+  return {
+    props: {
+      data: sheet.slice(1, sheet.length), // remove sheet header
+    },
+    revalidate: 1, // In seconds
+  };
 }
