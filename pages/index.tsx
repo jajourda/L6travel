@@ -13,7 +13,7 @@ export default function Home(props: any) {
         <h1 className="text-6xl font-bold">
           Welcome to{' '}
           <a className="text-red-600" href="https://nextjs.org">
-            Next.js! TONYies
+            Next.js! rv
           </a>
         </h1>
 
