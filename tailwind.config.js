@@ -7,11 +7,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        viridian: '#458C85',
-        pink: '#E0BAB3',
-        tarawera: '#073647',
-        darkGray: '#6d7b7e',
-        lightGray: '#dedee0',
+        teal: '#6abdb0',
+        navy: '#45516b',
+        mustard: '#f7b95a',
+        tomato: '#f0623d',
+        'light-orange': '#ed9354',
+        sand: '#f3f1c3',
       },
     },
   },
